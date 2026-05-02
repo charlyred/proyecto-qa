@@ -1,0 +1,32 @@
+name: Mi Primer Pipeline CI/CD
+
+# Esto dice: "Ejecútame cada vez que alguien guarde cambios"
+on: [push]
+
+jobs:
+  # ETAPA 1: CONSTRUIR
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Obtener el código
+        uses: actions/checkout@v3
+      - name: Instalar dependencias
+        run: pip install python-dotenv
+
+  # ETAPA 2: PROBAR (Testing)
+  test:
+    needs: build  # "Espera a que termine el Build"
+    runs-on: windows-latest
+    steps:
+      - name: Obtener el código
+        uses: actions/checkout@v3
+      - name: Ejecutar Tests de QA
+        run: python -m unittest tests/test_app.py
+
+  # ETAPA 3: DESPLEGAR
+  deploy:
+    needs: test   # "Espera a que terminen los Tests"
+    runs-on: windows-latest
+    steps:
+      - name: Simular despliegue a producción
+        run: echo "✅ ¡Tests pasaron! Enviando código al servidor..."
