@@ -15,13 +15,22 @@ jobs:
 
   # ETAPA 2: PROBAR (Testing)
   test:
-    needs: build  # "Espera a que termine el Build"
+    needs: build
     runs-on: windows-latest
     steps:
-      - name: Obtener el código
+      - name: Obtener el codigo
         uses: actions/checkout@v3
+      
+      - name: Instalar dependencias
+        run: pip install python-dotenv
+      
       - name: Ejecutar Tests de QA
         run: python -m unittest tests/test_app.py
+        env:
+          ENVIRONMENT: testing
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: mi_proyecto_test
 
   # ETAPA 3: DESPLEGAR
   deploy:
