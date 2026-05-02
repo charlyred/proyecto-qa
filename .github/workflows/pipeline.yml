@@ -26,7 +26,6 @@ jobs:
       
       - name: Crear archivo de configuración de test
         run: |
-          mkdir config
           echo "ENVIRONMENT=testing" > config/testing.env
           echo "DB_HOST=localhost" >> config/testing.env
           echo "DB_NAME=mi_proyecto_test" >> config/testing.env
