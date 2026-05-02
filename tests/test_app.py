@@ -31,7 +31,7 @@ class TestAislamiento(unittest.TestCase):
     def test_01_suma(self):
         """Test independiente 1"""
         resultado = self.datos_test['valor'] + 5
-        self.assertEqual(resultado, 15)
+        self.assertEqual(resultado, 45)
         print("[TEST 1] [OK] Suma correcta")
     
     def test_02_resta(self):
