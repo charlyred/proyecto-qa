@@ -33,7 +33,11 @@ jobs:
       
       - name: Ejecutar Tests de QA
         run: python -m unittest tests/test_app.py
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 42ba2e8 (reparando el test)
   # ETAPA 3: DESPLEGAR
   deploy:
     needs: test   # "Espera a que terminen los Tests"
