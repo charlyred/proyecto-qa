@@ -32,19 +32,19 @@ class TestAislamiento(unittest.TestCase):
         """Test independiente 1"""
         resultado = self.datos_test['valor'] + 5
         self.assertEqual(resultado, 15)
-        print("[TEST 1] ✓ Suma correcta")
+        print("[TEST 1] [OK] Suma correcta")
     
     def test_02_resta(self):
         """Test independiente 2 - NO depende del test 1"""
         resultado = self.datos_test['valor'] - 3
         self.assertEqual(resultado, 7)
-        print("[TEST 2] ✓ Resta correcta")
+        print("[TEST 2] [OK] Resta correcta")
     
     def test_03_aislamiento_datos(self):
         """Verificar que los datos se reinician en cada test"""
         # Cada test debe recibir datos frescos (valor = 10)
         self.assertEqual(self.datos_test['valor'], 10)
-        print("[TEST 3] ✓ Datos aislados correctamente")
+        print("[TEST 3] [OK] Datos aislados correctamente")
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
