@@ -14,7 +14,7 @@ jobs:
         run: pip install python-dotenv
 
   # ETAPA 2: PROBAR (Testing)
-    test:
+  test:
     needs: build
     runs-on: windows-latest
     steps:
