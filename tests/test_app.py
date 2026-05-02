@@ -8,8 +8,16 @@ class TestAislamiento(unittest.TestCase):
         """
         Se ejecuta ANTES de cada test
         """
-        # Cargar ambiente de testing
-        load_dotenv('config/testing.env')
+        # Intentar cargar ambiente de testing, con fallback si no existe el archivo
+        env_path = 'config/testing.env'
+        if os.path.exists(env_path):
+            load_dotenv(env_path)
+        else:
+            # Fallback para GitHub Actions: configurar variables manualmente
+            os.environ['ENVIRONMENT'] = 'testing'
+            os.environ['DB_HOST'] = 'localhost'
+            os.environ['DB_NAME'] = 'mi_proyecto_test'
+        
         self.datos_test = {'valor': 10}
         print(f"\n[SETUP] Ambiente: {os.getenv('ENVIRONMENT')}")
     
