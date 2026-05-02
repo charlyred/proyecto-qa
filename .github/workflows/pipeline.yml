@@ -24,13 +24,15 @@ jobs:
       - name: Instalar dependencias
         run: pip install python-dotenv
       
+      - name: Crear archivo de configuración de test
+        run: |
+          mkdir config
+          echo "ENVIRONMENT=testing" > config/testing.env
+          echo "DB_HOST=localhost" >> config/testing.env
+          echo "DB_NAME=mi_proyecto_test" >> config/testing.env
+      
       - name: Ejecutar Tests de QA
         run: python -m unittest tests/test_app.py
-        env:
-          ENVIRONMENT: testing
-          DB_HOST: localhost
-          DB_PORT: 5432
-          DB_NAME: mi_proyecto_test
 
   # ETAPA 3: DESPLEGAR
   deploy:
